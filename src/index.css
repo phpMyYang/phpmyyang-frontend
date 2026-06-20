@@ -291,3 +291,19 @@ body {
 
 .sileo-toast.success { border-left-color: #198754; }
 .sileo-toast.error { border-left-color: #dc3545; }
+
+/* --- Footer Social Icons --- */
+.social-icon {
+  color: var(--text-primary);
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.social-icon:hover {
+  color: #FE7743; 
+  transform: scale(1.2);
+}
+
+.offcanvas {
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
