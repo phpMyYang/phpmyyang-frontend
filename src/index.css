@@ -58,3 +58,33 @@ body {
 .glitch-effect {
   animation: subtle-glitch 4s infinite linear alternate;
 }
+
+/* Typewriter Cursor */
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Floating Image Animation */
+.hero-image-float {
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Subtle Image Glitch Filter */
+.image-glitch:hover {
+  animation: img-glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+@keyframes img-glitch {
+  0% { filter: contrast(1) hue-rotate(0deg); transform: translate(0); }
+  20% { filter: contrast(1.2) hue-rotate(5deg); transform: translate(-2px, 2px); }
+  40% { filter: contrast(0.8) hue-rotate(-5deg); transform: translate(2px, -2px); }
+  60% { filter: contrast(1.1) hue-rotate(2deg); transform: translate(-2px, -2px); }
+  80% { filter: contrast(0.9) hue-rotate(-2deg); transform: translate(2px, 2px); }
+  100% { filter: contrast(1) hue-rotate(0deg); transform: translate(0); }
+}
