@@ -30,7 +30,7 @@ const Skills = () => {
     <section
       id="skills"
       className="py-5"
-      style={{ backgroundColor: 'var(--bg-primary)', overflow: 'hidden' }}
+      style={{ backgroundColor: 'transparent', overflow: 'hidden' }}
     >
       <div className="container py-4">
         <h2

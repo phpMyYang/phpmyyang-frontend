@@ -8,14 +8,13 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import BinaryBackground from './components/BinaryBackground';
 
 function App() {
   return (
     <>
-      <div className="glitch-bg-container glitch-effect">
-        {/* Dito natin ilalagay ang dynamic binary numbers mamaya */}
-      </div>
-
+      <div className="glitch-bg-container glitch-effect"></div>
+      <BinaryBackground />
       <Navbar />
 
       {/* Main Content */}
