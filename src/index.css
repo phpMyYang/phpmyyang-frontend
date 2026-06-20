@@ -231,3 +231,63 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
   border-left-color: var(--accent) !important; 
 }
+
+/* --- Contact Form Styles --- */
+.custom-input {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(215, 215, 215, 0.2) !important;
+  border-radius: 8px;
+  padding: 12px 15px;
+}
+
+.custom-input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 0.25rem rgba(254, 119, 67, 0.25) !important;
+}
+
+.custom-cancel-btn {
+  color: var(--text-primary);
+  border: 1px solid rgba(215, 215, 215, 0.3);
+  transition: all 0.3s ease;
+}
+
+.custom-cancel-btn:hover {
+  background-color: rgba(215, 215, 215, 0.1);
+  color: #fff;
+}
+
+.contact-image-float {
+  animation: float-alt 6s ease-in-out infinite;
+}
+
+@keyframes float-alt {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-15px) scale(1.02); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+/* --- Sileo Toast Modal --- */
+.sileo-toast {
+  position: fixed;
+  bottom: -100px; 
+  right: 20px;
+  min-width: 300px;
+  max-width: 400px;
+  background: rgba(39, 63, 79, 0.95);
+  backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-left: 5px solid transparent;
+  transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1055;
+}
+
+.sileo-toast.show {
+  bottom: 20px; 
+}
+
+.sileo-toast.success { border-left-color: #198754; }
+.sileo-toast.error { border-left-color: #dc3545; }
