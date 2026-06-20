@@ -78,7 +78,7 @@ const Contact = () => {
     <section
       id="contact"
       className="py-5 position-relative"
-      style={{ backgroundColor: 'var(--bg-primary)' }}
+      style={{ backgroundColor: 'transparent' }}
     >
       <div className="container py-4">
         <h2

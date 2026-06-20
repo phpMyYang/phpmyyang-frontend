@@ -45,7 +45,7 @@ const Projects = () => {
         'An institutional enrollment system built to streamline student registration, featuring secure data handling and efficient record management.',
       techStack: ['Web Development', 'Database Management'],
       githubRepo: 'https://github.com/HolyFaceTech/SmartEnroll',
-      liveDemo: '#',
+      liveDemo: 'https://portal.holyface.school',
       image: projectImg,
     },
     {
@@ -63,7 +63,7 @@ const Projects = () => {
     <section
       id="projects"
       className="py-5"
-      style={{ backgroundColor: 'var(--bg-primary)' }}
+      style={{ backgroundColor: 'transparent' }}
     >
       <div className="container py-4">
         <h2
@@ -157,7 +157,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="btn btn-accent px-3 py-2 d-flex align-items-center"
                   >
-                    <i className="bi bi-box-arrow-up-right me-2"></i> Live Demo
+                    <i className="bi bi-box-arrow-up-right me-2"></i> Live
                   </a>
                 </div>
               </div>

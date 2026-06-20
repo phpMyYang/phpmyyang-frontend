@@ -28,7 +28,7 @@ const Education = () => {
     <section
       id="education"
       className="py-5"
-      style={{ backgroundColor: 'var(--bg-primary)' }}
+      style={{ backgroundColor: 'transparent' }}
     >
       <div className="container py-4">
         <h2

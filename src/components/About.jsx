@@ -5,7 +5,7 @@ const About = () => {
     <section
       id="about-me"
       className="py-5"
-      style={{ backgroundColor: 'var(--bg-primary)' }}
+      style={{ backgroundColor: 'transparent' }}
     >
       <div className="container py-5">
         <h2
