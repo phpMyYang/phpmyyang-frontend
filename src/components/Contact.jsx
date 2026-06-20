@@ -32,19 +32,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          recaptcha_token: recaptchaToken,
-        }),
-      });
+      const response = await fetch(
+        'https://phpmyyang-api.freedev.app/api/contact',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            recaptcha_token: recaptchaToken,
+          }),
+        }
+      );
 
       const data = await response.json();
 
