@@ -19,7 +19,7 @@ const Skills = () => {
       name: 'GitHub',
       icon: 'bi-github',
       color: '#D7D7D7',
-    } /* Light gray para makita sa dark theme */,
+    },
     { name: 'Postman', icon: 'bi-send', color: '#FF6C37' },
     { name: 'API Integration', icon: 'bi-plug', color: '#00C7B7' },
   ];

@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Projects from './components/Projects';
 
 function App() {
   return (
@@ -44,6 +45,20 @@ function App() {
         </div>
 
         <Skills />
+
+        <div className="container">
+          <hr
+            style={{
+              borderColor: 'var(--accent)',
+              borderWidth: '2px',
+              opacity: 0.3,
+              borderStyle: 'dashed',
+              margin: '0',
+            }}
+          />
+        </div>
+
+        <Projects />
       </main>
     </>
   );
