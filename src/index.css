@@ -109,3 +109,83 @@ body {
     text-align: justify;
   }
 }
+
+/* --- Skills Auto-Carousel Marquee --- */
+.marquee-wrapper {
+  width: 100vw; 
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  padding: 10px 0;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-left 30s linear infinite; 
+}
+
+.marquee-wrapper:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+.skill-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-wrapper {
+  width: 100vw; 
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  padding: 1.5rem 0;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content; 
+  animation: ticker-scroll 35s linear infinite;
+}
+
+.ticker-wrapper:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  margin-right: 2rem; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  white-space: nowrap;
+  filter: brightness(0.9);
+}
+
+.ticker-item:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4) !important;
+  cursor: default;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
