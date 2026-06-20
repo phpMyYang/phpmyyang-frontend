@@ -1,16 +1,70 @@
-# React + Vite
+# phpMyYang Portfolio - Frontend UI 💻
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the interactive and responsive frontend of the phpMyYang Developer Portfolio, built with **React and Vite**. It features a modern, tech-focused design with custom animations, glassmorphism UI, and a dynamic HTML5 canvas background.
 
-Currently, two official plugins are available:
+## 🛠️ Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework:** React.js (via Vite)
+- **Styling:** Bootstrap 5 & Custom CSS (Glassmorphism)
+- **Icons:** Bootstrap Icons
+- **Security:** React Google reCAPTCHA
+- **Animations:** HTML5 Canvas (Binary Rain Effect)
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Matrix/Binary Rain Background:** A high-performance, subtle binary rain animation running via HTML5 Canvas.
+- **Glassmorphism UI:** Modern translucent cards and sections with backdrop blur.
+- **Secure Contact Integration:** Connects directly to the Laravel API and includes Google reCAPTCHA v2 to prevent spam.
+- **Fully Responsive:** Optimized for mobile, tablet, and desktop viewing.
 
-## Expanding the ESLint configuration
+## 📋 Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Make sure you have the following installed:
+
+- Node.js (v18+ recommended)
+- npm or yarn
+
+## 🚀 Installation & Setup
+
+1. **Clone the repository**
+
+```bash
+   git clone [https://github.com/yourusername/phpmyyang-frontend.git](https://github.com/yourusername/phpmyyang-frontend.git)
+   cd phpmyyang-frontend
+
+```
+
+2. **Install dependencies**
+
+```bash
+   npm install
+
+```
+
+3. **Set up environment variables**
+   Create a `.env` file in the root directory (make sure it's included in your `.gitignore`) and add your reCAPTCHA site key:
+
+```env
+   VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
+
+```
+
+4. **Run the Development Server**
+
+```bash
+   npm run dev
+
+```
+
+The application will be available at `http://localhost:5173`.
+
+## 📦 Building for Production
+
+To build the app for production, run:
+
+```bash
+npm run build
+
+```
+
+This will generate optimized static files in the `dist` folder ready for deployment.
