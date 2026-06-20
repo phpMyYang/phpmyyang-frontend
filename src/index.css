@@ -207,3 +207,15 @@ body {
 .project-card:hover .project-image {
   transform: scale(1.1);
 }
+
+/* --- Experience Grid Card Effects --- */
+.exp-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-width 0.2s ease;
+  border-top: 5px solid transparent !important;
+}
+
+.exp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4) !important;
+  border-top: 5px solid var(--accent) !important;
+}
