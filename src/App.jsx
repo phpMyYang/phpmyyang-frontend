@@ -1,12 +1,11 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-// Ang Bootstrap ay naka-import na sa main.jsx kaya hindi na kailangan dito
+import About from './components/About';
 
 function App() {
   return (
     <>
-      {/* Glitch Background Wrapper */}
       <div className="glitch-bg-container glitch-effect">
         {/* Dito natin ilalagay ang dynamic binary numbers mamaya */}
       </div>
@@ -16,6 +15,18 @@ function App() {
       {/* Main Content */}
       <main>
         <Hero />
+        <div className="container">
+          <hr
+            style={{
+              borderColor: 'var(--accent)',
+              borderWidth: '2px',
+              opacity: 0.3,
+              borderStyle: 'dashed',
+              margin: '0',
+            }}
+          />
+        </div>
+        <About />
       </main>
     </>
   );
