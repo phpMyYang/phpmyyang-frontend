@@ -5,6 +5,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import Education from './components/Education';
 
 function App() {
   return (
@@ -74,6 +75,20 @@ function App() {
         </div>
 
         <Experience />
+
+        <div className="container">
+          <hr
+            style={{
+              borderColor: 'var(--accent)',
+              borderWidth: '2px',
+              opacity: 0.3,
+              borderStyle: 'dashed',
+              margin: '0',
+            }}
+          />
+        </div>
+
+        <Education />
       </main>
     </>
   );

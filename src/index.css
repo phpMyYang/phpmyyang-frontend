@@ -219,3 +219,15 @@ body {
   box-shadow: 0 15px 30px rgba(0,0,0,0.4) !important;
   border-top: 5px solid var(--accent) !important;
 }
+
+/* --- Education Compact Card Effects --- */
+.edu-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-color 0.3s ease;
+  border-left: 4px solid transparent !important;
+}
+
+.edu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+  border-left-color: var(--accent) !important; 
+}
