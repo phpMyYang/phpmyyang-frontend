@@ -41,7 +41,7 @@ const TermsContent = () => {
 
       <hr className="my-4 border-secondary" />
       <p className="small text-center opacity-50">
-        © 2026 phpMyYang Portfolio | Built with Passion
+        © 2026 phpMyYang | Built with Passion
       </p>
     </div>
   );
