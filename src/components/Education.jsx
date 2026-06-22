@@ -75,7 +75,7 @@ const Education = () => {
 
                   <div
                     className="mt-auto pt-2"
-                    style={{ borderTop: '1px dashed rgba(215,215,215,0.2)' }}
+                    style={{ borderTop: '1px dashed var(--border-color)' }}
                   >
                     <small
                       className="opacity-75 d-block"

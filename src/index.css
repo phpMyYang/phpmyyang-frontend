@@ -1,12 +1,27 @@
+/* DEFAULT / DARK MODE COLORS */
 :root {
   /* Color Palette Mapping */
   --bg-primary: #273F4F; 
   --bg-secondary: #447D9B; 
   --text-primary: #D7D7D7;
   --accent: #FE7743;
+
+  --border-color: rgba(215, 215, 215, 0.3);
+  --btn-disabled-bg: rgba(255, 255, 255, 0.05);
   
   /* Typography */
   --font-terminal: 'Courier New', Courier, monospace; 
+}
+
+/* LIGHT MODE COLORS */
+[data-theme="light"] {
+  --bg-primary: #f8fafc; 
+  --bg-secondary: #e2e8f0; 
+  --text-primary: #1e293b; 
+  --accent: #e65c2b; 
+
+  --border-color: rgba(15, 23, 42, 0.3);
+  --btn-disabled-bg: rgba(0, 0, 0, 0.05);
 }
 
 body {
@@ -17,18 +32,28 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 .btn-accent {
   background-color: var(--accent);
   color: #fff;
-  border: none;
+  border: 1px solid var(--accent);
   transition: all 0.3s ease-in-out;
 }
 
 .btn-accent:hover {
   background-color: #e06536; 
   transform: scale(1.05);
+}
+
+.btn-accent:disabled {
+  background-color: var(--btn-disabled-bg);
+  color: var(--text-primary);
+  opacity: 0.6;
+  border: 1px solid var(--border-color); 
+  cursor: not-allowed;
+  transform: none; 
 }
 
 /* Glitch Background Container */
@@ -208,7 +233,7 @@ body {
   transform: scale(1.1);
 }
 
-/* --- Experience Grid Card Effects --- */
+/* --- Experience Grid --- */
 .exp-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-width 0.2s ease;
   border-top: 5px solid transparent !important;
@@ -220,7 +245,7 @@ body {
   border-top: 5px solid var(--accent) !important;
 }
 
-/* --- Education Compact Card Effects --- */
+/* --- Education Compact --- */
 .edu-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-color 0.3s ease;
   border-left: 4px solid transparent !important;
@@ -232,7 +257,7 @@ body {
   border-left-color: var(--accent) !important; 
 }
 
-/* --- Contact Form Styles --- */
+/* --- Contact Form --- */
 .custom-input {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
@@ -246,15 +271,26 @@ body {
   box-shadow: 0 0 0 0.25rem rgba(254, 119, 67, 0.25) !important;
 }
 
+.custom-input::placeholder {
+  color: var(--text-primary);
+  opacity: 0.5; 
+}
+
+.custom-input::-moz-placeholder {
+  color: var(--text-primary);
+  opacity: 0.5;
+}
+
 .custom-cancel-btn {
   color: var(--text-primary);
-  border: 1px solid rgba(215, 215, 215, 0.3);
+  border: 1px solid var(--border-color); 
+  background-color: transparent;
   transition: all 0.3s ease;
 }
 
 .custom-cancel-btn:hover {
-  background-color: rgba(215, 215, 215, 0.1);
-  color: #fff;
+  background-color: var(--btn-disabled-bg); 
+  color: var(--text-primary);
 }
 
 .contact-image-float {
@@ -274,13 +310,14 @@ body {
   right: 20px;
   min-width: 300px;
   max-width: 400px;
-  background: rgba(39, 63, 79, 0.95);
+  background: var(--bg-secondary);
   backdrop-filter: blur(10px);
   color: var(--text-primary);
   padding: 1rem 1.5rem;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border-left: 5px solid transparent;
+  border: 1px solid var(--border-color); 
   transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   z-index: 1055;
 }
@@ -306,4 +343,89 @@ body {
 
 .offcanvas {
   border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- Terms and Policy --- */
+.modal-content {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.modal-header, 
+.modal-footer {
+  border-color: var(--border-color) !important;
+}
+
+.modal-body p, 
+.modal-body div,
+.modal-footer small,
+.modal-footer span {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(0) !important; 
+  opacity: 0.6 !important;
+}
+
+[data-theme="light"] .modal-header .btn-close:hover {
+  opacity: 1 !important;
+}
+
+:root .modal-header .btn-close,
+[data-theme="dark"] .modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%) !important; 
+  opacity: 0.6 !important;
+}
+
+:root .modal-header .btn-close:hover,
+[data-theme="dark"] .modal-header .btn-close:hover {
+  opacity: 1 !important;
+}
+
+.modal-footer .btn,
+.modal-footer button {
+  color: var(--text-primary) !important; 
+  border: 1px solid var(--text-primary) !important; 
+  background-color: transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.modal-footer .btn:hover,
+.modal-footer button:hover {
+  background-color: var(--text-primary) !important; 
+  color: var(--bg-primary) !important; 
+}
+
+/* --- SCROLL GLITCH EFFECT --- */
+.scroll-glitch-active {
+  animation: onScrollGlitch 0.2s infinite;
+}
+
+@keyframes onScrollGlitch {
+  0% { 
+    transform: translate(0); 
+    text-shadow: none; 
+  }
+  20% { 
+    transform: translate(-2px, 1px); 
+    text-shadow: 2px 0 rgba(254, 119, 67, 0.6), -2px 0 rgba(0, 255, 255, 0.6); 
+  }
+  40% { 
+    transform: translate(-1px, -1px); 
+    text-shadow: -2px 0 rgba(254, 119, 67, 0.6), 2px 0 rgba(0, 255, 255, 0.6); 
+  }
+  60% { 
+    transform: translate(2px, 1px); 
+    text-shadow: 2px 0 rgba(254, 119, 67, 0.6), -2px 0 rgba(0, 255, 255, 0.6); 
+  }
+  80% { 
+    transform: translate(1px, -1px); 
+    text-shadow: -2px 0 rgba(254, 119, 67, 0.6), 2px 0 rgba(0, 255, 255, 0.6); 
+  }
+  100% { 
+    transform: translate(0); 
+    text-shadow: none; 
+  }
 }

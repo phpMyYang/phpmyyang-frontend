@@ -3,14 +3,14 @@ import React from 'react';
 const SkeletonLoader = () => {
   const pulseStyle = `
     @keyframes pulse {
-      0% { opacity: 0.2; }
-      50% { opacity: 0.5; }
-      100% { opacity: 0.2; }
+      0% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+      100% { opacity: 0.3; }
     }
   `;
 
   const blockStyle = {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'var(--border-color)',
     borderRadius: '6px',
     animation: 'pulse 1.5s infinite ease-in-out',
   };
@@ -18,11 +18,12 @@ const SkeletonLoader = () => {
   return (
     <div
       style={{
-        backgroundColor: '#111827',
+        backgroundColor: 'var(--bg-primary)',
         minHeight: '100vh',
         padding: '5%',
         boxSizing: 'border-box',
         width: '100%',
+        transition: 'background-color 0.3s ease',
       }}
     >
       <style>{pulseStyle}</style>
@@ -66,6 +67,7 @@ const SkeletonLoader = () => {
           <div style={{ width: '100%', height: '18px', ...blockStyle }}></div>
           <div style={{ width: '90%', height: '18px', ...blockStyle }}></div>
           <div style={{ width: '80%', height: '18px', ...blockStyle }}></div>
+
           <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
             <div
               style={{ width: '130px', height: '45px', ...blockStyle }}
