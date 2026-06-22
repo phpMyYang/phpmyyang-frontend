@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailImg from '../assets/email.svg';
 
@@ -10,10 +10,27 @@ const Contact = () => {
   });
 
   const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const [captchaTheme, setCaptchaTheme] = useState('dark');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState({ show: false, type: '', message: '' });
-
   const recaptchaRef = useRef(null);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      setCaptchaTheme(currentTheme === 'light' ? 'light' : 'dark');
+    };
+
+    checkTheme();
+
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -168,9 +185,10 @@ const Contact = () => {
                 <div className="mb-4 d-flex justify-content-center">
                   <ReCAPTCHA
                     ref={recaptchaRef}
+                    key={captchaTheme}
                     sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                     onChange={(token) => setRecaptchaToken(token)}
-                    theme="dark"
+                    theme={captchaTheme}
                   />
                 </div>
 
@@ -220,17 +238,25 @@ const Contact = () => {
         aria-atomic="true"
       >
         <div className="d-flex align-items-center">
-          <i
-            className={`bi fs-4 me-3 ${toast.type === 'success' ? 'bi-check-circle-fill text-success' : 'bi-exclamation-triangle-fill text-danger'}`}
-          ></i>
-          <div>
-            <h6 className="mb-1 fw-bold">
-              {toast.type === 'success' ? 'Success!' : 'System Warning'}
-            </h6>
-            <span style={{ fontSize: '0.9rem', opacity: 0.9 }}>
-              {toast.message}
-            </span>
-          </div>
+          {toast.type && (
+            <>
+              <i
+                className={`bi fs-4 me-3 ${
+                  toast.type === 'success'
+                    ? 'bi-check-circle-fill text-success'
+                    : 'bi-exclamation-triangle-fill text-danger'
+                }`}
+              ></i>
+              <div>
+                <h6 className="mb-1 fw-bold">
+                  {toast.type === 'success' ? 'Success!' : 'System Warning'}
+                </h6>
+                <span style={{ fontSize: '0.9rem', opacity: 0.9 }}>
+                  {toast.message}
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

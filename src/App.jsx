@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,9 +10,35 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BinaryBackground from './components/BinaryBackground';
 import SkeletonLoader from './components/SkeletonLoader';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isGlitching, setIsGlitching] = useState(false);
+  const scrollTimeout = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!isGlitching) {
+        setIsGlitching(true);
+      }
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      scrollTimeout.current = setTimeout(() => {
+        setIsGlitching(false);
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    };
+  }, [isGlitching]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,91 +48,96 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (isLoading) {
-    return <SkeletonLoader />;
-  }
   return (
     <>
-      <div className="glitch-bg-container glitch-effect"></div>
-      <BinaryBackground />
-      <Navbar />
+      <ThemeSwitcher />
 
-      {/* Main Content */}
-      <main>
-        <Hero />
-        <About />
+      {isLoading ? (
+        <SkeletonLoader />
+      ) : (
+        <>
+          <div className="glitch-bg-container glitch-effect"></div>
+          <BinaryBackground />
+          <Navbar />
 
-        <div className="container">
-          <hr
-            style={{
-              borderColor: 'var(--accent)',
-              borderWidth: '2px',
-              opacity: 0.3,
-              borderStyle: 'dashed',
-              margin: '0',
-            }}
-          />
-        </div>
+          {/* Main Content */}
+          <main className={isGlitching ? 'scroll-glitch-active' : ''}>
+            <Hero />
+            <About />
 
-        <Skills />
+            <div className="container">
+              <hr
+                style={{
+                  borderColor: 'var(--accent)',
+                  borderWidth: '2px',
+                  opacity: 0.3,
+                  borderStyle: 'dashed',
+                  margin: '0',
+                }}
+              />
+            </div>
 
-        <div className="container">
-          <hr
-            style={{
-              borderColor: 'var(--accent)',
-              borderWidth: '2px',
-              opacity: 0.3,
-              borderStyle: 'dashed',
-              margin: '0',
-            }}
-          />
-        </div>
+            <Skills />
 
-        <Projects />
+            <div className="container">
+              <hr
+                style={{
+                  borderColor: 'var(--accent)',
+                  borderWidth: '2px',
+                  opacity: 0.3,
+                  borderStyle: 'dashed',
+                  margin: '0',
+                }}
+              />
+            </div>
 
-        <div className="container">
-          <hr
-            style={{
-              borderColor: 'var(--accent)',
-              borderWidth: '2px',
-              opacity: 0.3,
-              borderStyle: 'dashed',
-              margin: '0',
-            }}
-          />
-        </div>
+            <Projects />
 
-        <Experience />
+            <div className="container">
+              <hr
+                style={{
+                  borderColor: 'var(--accent)',
+                  borderWidth: '2px',
+                  opacity: 0.3,
+                  borderStyle: 'dashed',
+                  margin: '0',
+                }}
+              />
+            </div>
 
-        <div className="container">
-          <hr
-            style={{
-              borderColor: 'var(--accent)',
-              borderWidth: '2px',
-              opacity: 0.3,
-              borderStyle: 'dashed',
-              margin: '0',
-            }}
-          />
-        </div>
+            <Experience />
 
-        <Education />
+            <div className="container">
+              <hr
+                style={{
+                  borderColor: 'var(--accent)',
+                  borderWidth: '2px',
+                  opacity: 0.3,
+                  borderStyle: 'dashed',
+                  margin: '0',
+                }}
+              />
+            </div>
 
-        <div className="container">
-          <hr
-            style={{
-              borderColor: 'var(--accent)',
-              borderWidth: '2px',
-              opacity: 0.3,
-              borderStyle: 'dashed',
-              margin: '0',
-            }}
-          />
-        </div>
+            <Education />
 
-        <Contact />
-        <Footer />
-      </main>
+            <div className="container">
+              <hr
+                style={{
+                  borderColor: 'var(--accent)',
+                  borderWidth: '2px',
+                  opacity: 0.3,
+                  borderStyle: 'dashed',
+                  margin: '0',
+                }}
+              />
+            </div>
+
+            <Contact />
+            <Footer />
+          </main>
+        </>
+      )}
     </>
   );
 }

@@ -57,7 +57,7 @@ const About = () => {
 
               <div
                 className="mt-5 pt-3 border-top"
-                style={{ borderColor: 'rgba(215, 215, 215, 0.2) !important' }}
+                style={{ borderColor: 'var(--border-color)' }}
               >
                 <p className="fs-5 mb-1">Sincerely,</p>
                 <p

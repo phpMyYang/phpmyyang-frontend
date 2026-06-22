@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import logoImg from '../assets/logo.svg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
@@ -63,16 +63,31 @@ const Navbar = () => {
         style={{ backgroundColor: 'var(--bg-primary)' }}
       >
         <div className="container">
+          {/* DESKTOP LOGO & BRAND */}
           <a
-            className="navbar-brand fst-italic d-none d-lg-block"
+            className="navbar-brand fst-italic d-none d-lg-flex align-items-center gap-2"
             href="#hero"
-            style={{ color: 'var(--text-primary)', fontWeight: 'bold' }}
+            style={{
+              color: 'var(--text-primary)',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+            }}
           >
+            <img
+              src={logoImg}
+              alt="Brand Logo"
+              style={{
+                width: '35px',
+                height: '35px',
+                objectFit: 'cover',
+              }}
+            />
             phpMyYang
           </a>
 
+          {/* MOBILE LOGO & BRAND */}
           <span
-            className="navbar-brand fst-italic d-lg-none"
+            className="navbar-brand fst-italic d-lg-none d-flex align-items-center gap-2"
             onClick={toggleMenu}
             style={{
               color: 'var(--text-primary)',
@@ -80,6 +95,15 @@ const Navbar = () => {
               cursor: 'pointer',
             }}
           >
+            <img
+              src={logoImg}
+              alt="Brand Logo"
+              style={{
+                width: '35px',
+                height: '35px',
+                objectFit: 'cover',
+              }}
+            />
             phpMyYang
           </span>
 
