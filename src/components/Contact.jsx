@@ -50,7 +50,7 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        'https://phpmyyang-api.freedev.app/api/contact',
+        'https://phpmyyang-api.onrender.com/api/contact',
         {
           method: 'POST',
           headers: {
