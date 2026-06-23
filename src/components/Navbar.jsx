@@ -3,7 +3,7 @@ import logoImg from '../assets/logo.svg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('home');
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        'hero',
+        'home',
         'about-me',
         'skills',
         'projects',
@@ -26,7 +26,7 @@ const Navbar = () => {
         'education',
         'contact',
       ];
-      let current = 'hero';
+      let current = 'home';
 
       for (let section of sections) {
         const element = document.getElementById(section);
@@ -47,7 +47,7 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    'Hero',
+    'Home',
     'About Me',
     'Skills',
     'Projects',
@@ -66,7 +66,7 @@ const Navbar = () => {
           {/* DESKTOP LOGO & BRAND */}
           <a
             className="navbar-brand fst-italic d-none d-lg-flex align-items-center gap-2"
-            href="#hero"
+            href="#home"
             style={{
               color: 'var(--text-primary)',
               fontWeight: 'bold',

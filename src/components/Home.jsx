@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import heroImg from '../assets/me.png';
 
-const Hero = () => {
+const Home = () => {
   const fullText = "Hi, I'm Jeremiah Ezekiel Lopeña.";
   const [text, setText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
@@ -31,7 +31,7 @@ const Hero = () => {
 
   return (
     <section
-      id="hero"
+      id="home"
       className="min-vh-100 d-flex align-items-center pt-5 mt-5 mt-lg-0"
     >
       <div className="container">
@@ -100,4 +100,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Home;
