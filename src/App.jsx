@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Home from './components/Home';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -62,7 +62,7 @@ function App() {
 
           {/* Main Content */}
           <main className={isGlitching ? 'scroll-glitch-active' : ''}>
-            <Hero />
+            <Home />
             <About />
 
             <div className="container">
