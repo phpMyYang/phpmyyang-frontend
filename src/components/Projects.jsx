@@ -14,7 +14,7 @@ const Projects = () => {
         'A full-stack web application currently managing over 1,300 student records in production. It features dynamic frontend UI adjustments in React and rigorous backend security hardening in Laravel.',
       techStack: ['React.js', 'Laravel', 'Security'],
       githubRepo: 'https://github.com/HolyFaceTech/campusloop-backend',
-      liveDemo: '#',
+      liveDemo: 'https://lms.holyface.school',
       image: projectImg2,
     },
     {
