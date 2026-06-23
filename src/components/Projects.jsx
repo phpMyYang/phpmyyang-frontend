@@ -1,5 +1,10 @@
 import React from 'react';
-import projectImg from '../assets/project.svg';
+import projectImg1 from '../assets/project.svg';
+import projectImg2 from '../assets/campusloop.PNG';
+import projectImg3 from '../assets/blog.PNG';
+import projectImg4 from '../assets/smartenroll.PNG';
+import projectImg5 from '../assets/stocksync.PNG';
+import projectImg6 from '../assets/taskflow.PNG';
 
 const Projects = () => {
   const projectList = [
@@ -10,7 +15,7 @@ const Projects = () => {
       techStack: ['React.js', 'Laravel', 'Security'],
       githubRepo: 'https://github.com/HolyFaceTech/campusloop-backend',
       liveDemo: '#',
-      image: projectImg,
+      image: projectImg2,
     },
     {
       title: 'Online Food Ordering API',
@@ -19,7 +24,7 @@ const Projects = () => {
       techStack: ['Java', 'Spring Boot', 'MySQL'],
       githubRepo: 'https://github.com/phpMyYang/food-ordering-api',
       liveDemo: '#',
-      image: projectImg,
+      image: projectImg1,
     },
     {
       title: 'Personal Blog System',
@@ -28,7 +33,7 @@ const Projects = () => {
       techStack: ['Web Development', 'Full-Stack', 'UI/UX'],
       githubRepo: 'https://github.com/phpMyYang/personal-blog-system',
       liveDemo: '#',
-      image: projectImg,
+      image: projectImg3,
     },
     {
       title: 'TaskFlow',
@@ -37,7 +42,7 @@ const Projects = () => {
       techStack: ['React.js', 'Laravel', 'REST API'],
       githubRepo: 'https://github.com/phpMyYang/taskflow',
       liveDemo: '#',
-      image: projectImg,
+      image: projectImg6,
     },
     {
       title: 'SmartEnroll',
@@ -46,7 +51,7 @@ const Projects = () => {
       techStack: ['Web Development', 'Database Management'],
       githubRepo: 'https://github.com/HolyFaceTech/SmartEnroll',
       liveDemo: 'https://portal.holyface.school',
-      image: projectImg,
+      image: projectImg4,
     },
     {
       title: 'StockSync',
@@ -55,7 +60,7 @@ const Projects = () => {
       techStack: ['Full-Stack', 'API Integration'],
       githubRepo: 'https://github.com/phpMyYang/stocksync',
       liveDemo: '#',
-      image: projectImg,
+      image: projectImg5,
     },
   ];
 
