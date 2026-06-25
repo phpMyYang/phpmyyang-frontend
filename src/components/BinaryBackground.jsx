@@ -21,11 +21,8 @@ const BinaryBackground = () => {
     }
 
     const draw = () => {
-      // Fade effect (background color opacity)
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.05)'; // Adjust based on your --bg-primary
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Binary text color (Accent color with opacity)
       ctx.fillStyle = '#FE7743';
       ctx.font = `${fontSize}px monospace`;
 
@@ -64,9 +61,9 @@ const BinaryBackground = () => {
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: -1, // Nasa likod ng lahat
-        opacity: 0.12, // Subtle opacity
-        pointerEvents: 'none', // Para hindi maka-block ng clicks
+        zIndex: -1,
+        opacity: 0.12,
+        pointerEvents: 'none',
         width: '100%',
         height: '100%',
       }}

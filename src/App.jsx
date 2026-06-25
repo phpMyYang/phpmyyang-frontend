@@ -14,31 +14,25 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isGlitching, setIsGlitching] = useState(false);
-  const scrollTimeout = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!isGlitching) {
-        setIsGlitching(true);
-      }
+      const totalScroll = document.documentElement.scrollTop;
+      const windowHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
 
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-
-      scrollTimeout.current = setTimeout(() => {
-        setIsGlitching(false);
-      }, 150);
+      const scroll = (totalScroll / windowHeight) * 100;
+      setScrollProgress(scroll);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
-  }, [isGlitching]);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -47,7 +41,6 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <>
       <ThemeSwitcher />
@@ -56,12 +49,16 @@ function App() {
         <SkeletonLoader />
       ) : (
         <>
+          <div
+            className="neon-scroll-bar"
+            style={{ width: `${scrollProgress}%` }}
+          ></div>
           <div className="glitch-bg-container glitch-effect"></div>
           <BinaryBackground />
           <Navbar />
 
           {/* Main Content */}
-          <main className={isGlitching ? 'scroll-glitch-active' : ''}>
+          <main>
             <Home />
             <About />
 
