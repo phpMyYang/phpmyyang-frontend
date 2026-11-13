@@ -68,51 +68,39 @@ const Footer = () => {
       </div>
 
       {show && (
-        <>
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            zIndex: 10550,
+            backdropFilter: 'blur(5px)',
+          }}
+        >
           <div
-            className="modal show d-block"
-            tabIndex="-1"
-            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
+            className="rounded-4 shadow-lg p-4 mx-3 position-relative"
+            style={{
+              backgroundColor: 'var(--bg-secondary)',
+              border: '1px solid var(--accent)',
+              maxWidth: '500px',
+              width: '100%',
+            }}
           >
-            <div className="modal-dialog modal-dialog-centered modal-lg">
-              <div
-                className="modal-content"
-                style={{
-                  backgroundColor: 'var(--bg-secondary)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid rgba(254,119,67,0.3)',
-                }}
-              >
-                <div className="modal-header border-0">
-                  <h5
-                    className="modal-title fw-bold d-flex align-items-center"
-                    style={{ color: 'var(--accent)' }}
-                  >
-                    <i className="bi bi-shield-lock-fill me-2"></i> Terms and
-                    Policy
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close btn-close-white"
-                    onClick={handleClose}
-                  ></button>
-                </div>
-                <div className="modal-body">
-                  <TermsContent />
-                </div>
-                <div className="modal-footer border-0">
-                  <button
-                    type="button"
-                    className="btn btn-outline-light"
-                    onClick={handleClose}
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
+            <button
+              type="button"
+              className="btn-close btn-close-white position-absolute top-0 end-0 m-4"
+              onClick={handleClose}
+              aria-label="Close"
+            ></button>
+
+            <h3
+              className="fw-bold mb-3 text-center"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              Terms and Policy
+            </h3>
+            <TermsContent onClose={handleClose} />
           </div>
-        </>
+        </div>
       )}
     </footer>
   );

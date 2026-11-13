@@ -24,6 +24,7 @@ const Navbar = () => {
         'projects',
         'experience',
         'education',
+        'certificates',
         'contact',
       ];
       let current = 'home';
@@ -41,19 +42,20 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // I-run agad sa initial load
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    'Home',
-    'About Me',
-    'Skills',
-    'Projects',
-    'Experience',
-    'Education',
-    'Contact',
+    { name: 'Home', icon: 'bi-house-door' },
+    { name: 'About Me', icon: 'bi-person' },
+    { name: 'Skills', icon: 'bi-lightning-charge' },
+    { name: 'Projects', icon: 'bi-briefcase' },
+    { name: 'Experience', icon: 'bi-building' },
+    { name: 'Education', icon: 'bi-mortarboard' },
+    { name: 'Certificates', icon: 'bi-award' },
+    { name: 'Contact', icon: 'bi-envelope' },
   ];
 
   return (
@@ -63,7 +65,6 @@ const Navbar = () => {
         style={{ backgroundColor: 'var(--bg-primary)' }}
       >
         <div className="container">
-          {/* DESKTOP LOGO & BRAND */}
           <a
             className="navbar-brand fst-italic d-none d-lg-flex align-items-center gap-2"
             href="#home"
@@ -85,7 +86,6 @@ const Navbar = () => {
             phpMyYang
           </a>
 
-          {/* MOBILE LOGO & BRAND */}
           <span
             className="navbar-brand fst-italic d-lg-none d-flex align-items-center gap-2"
             onClick={toggleMenu}
@@ -110,14 +110,15 @@ const Navbar = () => {
           <div className="collapse navbar-collapse justify-content-end d-none d-lg-flex">
             <ul className="navbar-nav">
               {navItems.map((item) => {
-                const sectionId = item.toLowerCase().replace(' ', '-');
+                const sectionId = item.name.toLowerCase().replace(' ', '-');
                 const isActive = activeSection === sectionId;
 
                 return (
-                  <li className="nav-item mx-1" key={item}>
+                  <li className="nav-item mx-1" key={item.name}>
                     <a
-                      className="nav-link px-3 fw-bold"
+                      className="nav-link px-3 fw-bold d-flex flex-column align-items-center justify-content-center"
                       href={`#${sectionId}`}
+                      title={item.name}
                       style={{
                         color: isActive
                           ? 'var(--accent)'
@@ -126,9 +127,11 @@ const Navbar = () => {
                         borderBottom: isActive
                           ? '2px solid var(--accent)'
                           : '2px solid transparent',
+                        paddingBottom: '8px',
+                        height: '100%',
                       }}
                     >
-                      {item}
+                      <i className={`bi ${item.icon} fs-5`}></i>
                     </a>
                   </li>
                 );
@@ -169,13 +172,13 @@ const Navbar = () => {
         <div className="offcanvas-body">
           <ul className="navbar-nav justify-content-end flex-grow-1 mt-3">
             {navItems.map((item) => {
-              const sectionId = item.toLowerCase().replace(' ', '-');
+              const sectionId = item.name.toLowerCase().replace(' ', '-');
               const isActive = activeSection === sectionId;
 
               return (
-                <li className="nav-item mb-3" key={item}>
+                <li className="nav-item mb-3" key={item.name}>
                   <a
-                    className="nav-link px-3 fs-5"
+                    className="nav-link px-3 fs-5 d-flex align-items-center"
                     href={`#${sectionId}`}
                     style={{
                       color: isActive ? 'var(--accent)' : 'var(--text-primary)',
@@ -187,7 +190,9 @@ const Navbar = () => {
                     }}
                     onClick={closeMenu}
                   >
-                    {item}
+                    {/* Show icon AND text on mobile */}
+                    <i className={`bi ${item.icon} me-3`}></i>
+                    {item.name}
                   </a>
                 </li>
               );

@@ -1,16 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import BinaryBackground from './components/BinaryBackground';
 import SkeletonLoader from './components/SkeletonLoader';
 import ThemeSwitcher from './components/ThemeSwitcher';
+import TermsModal from './components/TermsModal';
+
+const About = lazy(() => import('./components/About'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const Experience = lazy(() => import('./components/Experience'));
+const Education = lazy(() => import('./components/Education'));
+const Certificate = lazy(() => import('./components/Certificate'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +44,7 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
       <ThemeSwitcher />
@@ -55,83 +59,100 @@ function App() {
           ></div>
           <div className="glitch-bg-container glitch-effect"></div>
           <BinaryBackground />
+          <TermsModal />
           <Navbar />
 
-          {/* Main Content */}
           <main>
             <Home />
-            <About />
 
-            <div className="container">
-              <hr
-                style={{
-                  borderColor: 'var(--accent)',
-                  borderWidth: '2px',
-                  opacity: 0.3,
-                  borderStyle: 'dashed',
-                  margin: '0',
-                }}
-              />
-            </div>
+            <Suspense fallback={<SkeletonLoader />}>
+              <About />
 
-            <Skills />
+              <div className="container">
+                <hr
+                  style={{
+                    borderColor: 'var(--accent)',
+                    borderWidth: '2px',
+                    opacity: 0.3,
+                    borderStyle: 'dashed',
+                    margin: '0',
+                  }}
+                />
+              </div>
 
-            <div className="container">
-              <hr
-                style={{
-                  borderColor: 'var(--accent)',
-                  borderWidth: '2px',
-                  opacity: 0.3,
-                  borderStyle: 'dashed',
-                  margin: '0',
-                }}
-              />
-            </div>
+              <Skills />
 
-            <Projects />
+              <div className="container">
+                <hr
+                  style={{
+                    borderColor: 'var(--accent)',
+                    borderWidth: '2px',
+                    opacity: 0.3,
+                    borderStyle: 'dashed',
+                    margin: '0',
+                  }}
+                />
+              </div>
 
-            <div className="container">
-              <hr
-                style={{
-                  borderColor: 'var(--accent)',
-                  borderWidth: '2px',
-                  opacity: 0.3,
-                  borderStyle: 'dashed',
-                  margin: '0',
-                }}
-              />
-            </div>
+              <Projects />
 
-            <Experience />
+              <div className="container">
+                <hr
+                  style={{
+                    borderColor: 'var(--accent)',
+                    borderWidth: '2px',
+                    opacity: 0.3,
+                    borderStyle: 'dashed',
+                    margin: '0',
+                  }}
+                />
+              </div>
 
-            <div className="container">
-              <hr
-                style={{
-                  borderColor: 'var(--accent)',
-                  borderWidth: '2px',
-                  opacity: 0.3,
-                  borderStyle: 'dashed',
-                  margin: '0',
-                }}
-              />
-            </div>
+              <Experience />
 
-            <Education />
+              <div className="container">
+                <hr
+                  style={{
+                    borderColor: 'var(--accent)',
+                    borderWidth: '2px',
+                    opacity: 0.3,
+                    borderStyle: 'dashed',
+                    margin: '0',
+                  }}
+                />
+              </div>
 
-            <div className="container">
-              <hr
-                style={{
-                  borderColor: 'var(--accent)',
-                  borderWidth: '2px',
-                  opacity: 0.3,
-                  borderStyle: 'dashed',
-                  margin: '0',
-                }}
-              />
-            </div>
+              <Education />
 
-            <Contact />
-            <Footer />
+              <div className="container">
+                <hr
+                  style={{
+                    borderColor: 'var(--accent)',
+                    borderWidth: '2px',
+                    opacity: 0.3,
+                    borderStyle: 'dashed',
+                    margin: '0',
+                  }}
+                />
+              </div>
+
+              <Certificate />
+
+              <div className="container">
+                <hr
+                  style={{
+                    borderColor: 'var(--accent)',
+                    borderWidth: '2px',
+                    opacity: 0.3,
+                    borderStyle: 'dashed',
+                    margin: '0',
+                  }}
+                />
+              </div>
+
+              <Contact />
+              <Footer />
+            </Suspense>
           </main>
         </>
       )}
