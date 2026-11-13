@@ -6,6 +6,9 @@ const Home = () => {
   const [text, setText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
 
+  const [isHoveringResume, setIsHoveringResume] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
     let index = 0;
     let typingInterval;
@@ -29,10 +32,42 @@ const Home = () => {
     return () => clearInterval(typingInterval);
   }, [isTyping]);
 
+  const handleMouseEnter = (e) => {
+    setIsHoveringResume(true);
+    updateModalPosition(e);
+  };
+
+  const handleMouseMove = (e) => {
+    updateModalPosition(e);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHoveringResume(false);
+  };
+
+  const updateModalPosition = (e) => {
+    const modalWidth = 320;
+    const modalHeight = 450;
+    const offset = 20;
+
+    let newX = e.clientX + offset;
+    let newY = e.clientY + offset;
+
+    if (newX + modalWidth > window.innerWidth) {
+      newX = e.clientX - modalWidth - offset;
+    }
+
+    if (newY + modalHeight > window.innerHeight) {
+      newY = e.clientY - modalHeight - offset;
+    }
+
+    setModalPosition({ x: newX, y: newY });
+  };
+
   return (
     <section
       id="home"
-      className="min-vh-100 d-flex align-items-center pt-5 mt-5 mt-lg-0"
+      className="min-vh-100 d-flex align-items-center pt-5 mt-5 mt-lg-0 position-relative"
     >
       <div className="container">
         <div className="row align-items-center">
@@ -53,10 +88,10 @@ const Home = () => {
                 maxWidth: '600px',
               }}
             >
-              Highly motivated and eager fresh graduate seeking an entry-level
-              Web Developer position. Equipped with foundational to practical
-              skills in HTML, CSS, PHP, Java Spring Boot, and code management
-              using GitHub.
+              Impact-driven Full-Stack Web Developer specializing in the
+              React.js and Laravel ecosystem. Proven track record of
+              architecting scalable web applications, secure RESTful APIs, and
+              systems that drive immense operational efficiency.
             </p>
 
             <div className="d-flex justify-content-center justify-content-lg-start gap-3 mt-4">
@@ -74,6 +109,9 @@ const Home = () => {
                 rel="noopener noreferrer"
                 className="btn btn-outline-light px-4 py-2 fw-bold d-flex align-items-center justify-content-center"
                 style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
+                onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
               >
                 <i className="bi bi-file-earmark-arrow-down-fill fs-5"></i>
                 <span className="d-none d-sm-inline ms-2">Download CV</span>
@@ -95,6 +133,36 @@ const Home = () => {
             />
           </div>
         </div>
+      </div>
+
+      <div
+        className="position-fixed shadow-lg rounded"
+        style={{
+          opacity: isHoveringResume ? 1 : 0,
+          visibility: isHoveringResume ? 'visible' : 'hidden',
+          transition: 'opacity 0.2s ease, visibility 0.2s ease',
+          top: modalPosition.y,
+          left: modalPosition.x,
+          width: '320px',
+          height: '450px',
+          backgroundColor: '#fff',
+          border: '2px solid var(--accent)',
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          zIndex: 9999,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <iframe
+          src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+          title="Resume Preview"
+          width="100%"
+          height="100%"
+          style={{ border: 'none' }}
+          scrolling="no"
+        />
       </div>
     </section>
   );
