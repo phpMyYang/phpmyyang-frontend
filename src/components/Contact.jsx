@@ -142,6 +142,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="form-control custom-input"
                     placeholder="John Doe"
+                    disabled={isSubmitting}
                     required
                   />
                 </div>
@@ -160,6 +161,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="form-control custom-input"
                     placeholder="johndoe@example.com"
+                    disabled={isSubmitting}
                     required
                   />
                 </div>
@@ -178,11 +180,19 @@ const Contact = () => {
                     className="form-control custom-input"
                     rows="5"
                     placeholder="Hello! I would like to discuss a project..."
+                    disabled={isSubmitting}
                     required
                   ></textarea>
                 </div>
 
-                <div className="mb-4 d-flex justify-content-center">
+                <div
+                  className="mb-4 d-flex justify-content-center"
+                  style={{
+                    pointerEvents: isSubmitting ? 'none' : 'auto',
+                    opacity: isSubmitting ? 0.6 : 1,
+                    transition: 'opacity 0.2s ease',
+                  }}
+                >
                   <ReCAPTCHA
                     ref={recaptchaRef}
                     key={captchaTheme}
