@@ -48,23 +48,23 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const apiBaseUrl =
+      import.meta.env.VITE_API_BASE_URL || 'https://phpmyyang-api.onrender.com';
+
     try {
-      const response = await fetch(
-        'https://phpmyyang-api.onrender.com/api/contact',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            recaptcha_token: recaptchaToken,
-          }),
-        }
-      );
+      const response = await fetch(`${apiBaseUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          recaptcha_token: recaptchaToken,
+        }),
+      });
 
       const data = await response.json();
 
