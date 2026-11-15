@@ -132,20 +132,30 @@ const ThemeSwitcher = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleMouseDown = (e) => {
+  const handleDragStart = (clientX, clientY) => {
     setIsDragging(true);
     startPosRef.current = {
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
+      x: clientX - position.x,
+      y: clientY - position.y,
     };
     document.body.style.userSelect = 'none';
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseDown = (e) => {
+    handleDragStart(e.clientX, e.clientY);
+  };
+
+  const handleTouchStart = (e) => {
+    if (e.cancelable) e.preventDefault();
+    const touch = e.touches[0];
+    handleDragStart(touch.clientX, touch.clientY);
+  };
+
+  const handleDragMove = (clientX, clientY) => {
     if (!isDragging) return;
 
-    let newX = e.clientX - startPosRef.current.x;
-    let newY = e.clientY - startPosRef.current.y;
+    let newX = clientX - startPosRef.current.x;
+    let newY = clientY - startPosRef.current.y;
 
     const maxX = window.innerWidth - 150;
     const maxY = window.innerHeight - 60;
@@ -156,7 +166,17 @@ const ThemeSwitcher = () => {
     setPosition({ x: newX, y: newY });
   };
 
-  const handleMouseUp = () => {
+  const handleMouseMove = (e) => {
+    handleDragMove(e.clientX, e.clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    handleDragMove(touch.clientX, touch.clientY);
+  };
+
+  const handleDragEnd = () => {
     if (isDragging) {
       setIsDragging(false);
       document.body.style.userSelect = '';
@@ -166,15 +186,22 @@ const ThemeSwitcher = () => {
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('mouseup', handleDragEnd);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleDragEnd);
     } else {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('mouseup', handleDragEnd);
+
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleDragEnd);
     }
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('mouseup', handleDragEnd);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleDragEnd);
     };
   }, [isDragging]);
 
@@ -202,6 +229,7 @@ const ThemeSwitcher = () => {
     alignItems: 'center',
     cursor: isDragging ? 'grabbing' : 'grab',
     color: 'var(--text-primary)',
+    touchAction: 'none',
   };
 
   const btnStyle = (activeTheme) => ({
@@ -222,6 +250,7 @@ const ThemeSwitcher = () => {
       <div
         style={dragHandleStyle}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         title="Drag to move"
       >
         <DragIcon />

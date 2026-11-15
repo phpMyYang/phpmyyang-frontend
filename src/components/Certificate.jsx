@@ -9,35 +9,35 @@ const Certificate = () => {
       title: 'Programming (Java) NC III',
       issuer: 'TESDA (Technical Education and Skills Development Authority)',
       date: 'May 2026',
-      file: '/TesdaJava.pdf',
+      file: '/TesdaJava.jpg',
       dimensions: { width: 395, height: 280 },
     },
     {
       title: 'Supervised Industry Learning in Programming (JAVA) NC III',
       issuer: 'Spring Valley Tech Corp.',
       date: 'June 1-6, 2026',
-      file: '/SpringValley.pdf',
+      file: '/SpringValley.jpg',
       dimensions: { width: 350, height: 200 },
     },
     {
       title: 'AWS Cloud Quest: Cloud Practitioner',
       issuer: 'Amazon Web Services',
       date: 'June 8, 2026',
-      file: '/aws_certificate.pdf',
+      file: '/aws_certificate.jpg',
       dimensions: { width: 360, height: 280 },
     },
     {
       title: 'Securing the Digital Realm: MongoDB NoSQL from Scratch',
       issuer: 'La Consolacion University Philippines',
       date: 'July 27, 2024',
-      file: '/MongoDB.pdf',
+      file: '/MongoDB.jpg',
       dimensions: { width: 395, height: 280 },
     },
     {
       title: 'Artificial Intelligence in Higher Education',
       issuer: 'La Consolacion University Philippines',
       date: 'July 27, 2024',
-      file: '/ArtificialIntellegence.pdf',
+      file: '/ArtificialIntellegence.jpg',
       dimensions: { width: 395, height: 280 },
     },
   ];
@@ -176,13 +176,10 @@ const Certificate = () => {
               alignItems: 'center',
             }}
           >
-            <iframe
-              src={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`}
-              title={cert.title}
-              width="100%"
-              height="100%"
-              style={{ border: 'none' }}
-              scrolling="no"
+            <img
+              src={cert.file}
+              alt={cert.title}
+              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
             />
           </div>
         );
